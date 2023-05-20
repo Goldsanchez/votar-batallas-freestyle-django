@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os # render
 import dj_database_url #render
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -88,10 +90,9 @@ WSGI_APPLICATION = 'stats_crud_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3',conn_max_age=600)} #render
-
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_VERCEL_EXTERNAL'),conn_max_age=600)
+    } #render
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -110,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization
@@ -140,7 +143,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://votar-batallas-nextjs.vercel.app'
 ]
 
 
