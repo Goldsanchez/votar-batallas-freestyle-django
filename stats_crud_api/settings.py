@@ -147,5 +147,9 @@ CORS_ALLOWED_ORIGINS = [
     'https://votar-batallas-nextjs.vercel.app'
 ]
 
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False, #Para que el campo DecimalField devuelva un entero y no un string.
+}
+
 
 # ________ Fin Setting Default__________________
