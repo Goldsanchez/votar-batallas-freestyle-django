@@ -8,6 +8,7 @@ class FreestylerAdmin(admin.ModelAdmin):
 
 class BattleAdmin(admin.ModelAdmin):
     list_display = ["judge", "group", "freestyler_1", "freestyler_2", "score_freestyler_1", "score_freestyler_2", "winner_replica", "competition", "season", "created_at"]
+    fields = ("judge", "group", "freestyler_1", "freestyler_2", "score_freestyler_1", "score_freestyler_2", "winner_replica", "competition", "season")
 
 admin.site.register(Country)
 admin.site.register(Competition)
